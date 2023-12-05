@@ -34,6 +34,31 @@
 #' @importFrom purrr map2
 #' @importFrom conflicted conflict_prefer
 #' @importFrom ggprism theme_prism
+#' @examples
+#' library(KmeansTrendAnalyzer)
+#' library(tidyverse)
+#' data <- mango_FI_DAM %>%
+#'   select(Index,`TA-1`:`C-3`,Class = Class.I) %>%
+#'   column_to_rownames("Index") %>%
+#'   mutate(TA = rowMeans(select(., 1:3)),
+#'          TB = rowMeans(select(., 4:6)),
+#'          TC = rowMeans(select(., 7:9)),
+#'          A = rowMeans(select(., 10:12)),
+#'          B = rowMeans(select(., 13:15)),
+#'          C = rowMeans(select(., 16:18))) %>%
+#'   select(!contains("-")) %>%
+#'   mutate(Colour = case_when(
+#'     Class == "Amino acids and derivatives" ~ "#FF0000",
+#'     Class == "Lipids" ~ "#FFFF00",
+#'     Class == "Nucleotides and derivatives" ~ "#00FF00",
+#'     Class == "Organic acids" ~ "#00FFFF",
+#'     Class == "Phenolic acids" ~ "#0000FF",
+#'     Class == "Others" ~ "#FF00FF"
+#'   ))
+#' df_mango <- data
+#' KmeansR2(df_mango)
+#' # ggsave("df_mango.pdf",width = 20,height = 10)
+
 KmeansR2 <- function(data,centers = 6,table = TRUE,angle = 90,
                      box = FALSE,label_size = 3,
                      legend.position = "right") {

@@ -1,9 +1,0 @@
-#' 这是一个示例数据集
-#'
-#' 这个数据集包含了哪些变量，每个变量代表什么等等
-#'
-#' @format 一个数据框的说明
-#' @source 数据集的来源
-#' @importFrom openxlsx read.xlsx
-mango_FI_DAM <- read.xlsx("e:/count/Supplemental_Table_S4_StaffRL.xlsx")
-

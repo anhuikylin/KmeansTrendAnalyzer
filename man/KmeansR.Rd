@@ -53,4 +53,27 @@ df <- mango_FI_DAM \%>\%
   select(!contains("-"))
 cncalc(df)
 KmeansR(df,centers = 3,angle = 0,box = TRUE)
+library(KmeansTrendAnalyzer)
+library(tidyverse)
+data <- mango_FI_DAM \%>\%
+  select(Index,`TA-1`:`C-3`,Class = Class.I) \%>\%
+  column_to_rownames("Index") \%>\%
+  mutate(TA = rowMeans(select(., 1:3)),
+         TB = rowMeans(select(., 4:6)),
+         TC = rowMeans(select(., 7:9)),
+         A = rowMeans(select(., 10:12)),
+         B = rowMeans(select(., 13:15)),
+         C = rowMeans(select(., 16:18))) \%>\%
+  select(!contains("-")) \%>\%
+  mutate(Colour = case_when(
+    Class == "Amino acids and derivatives" ~ "#FF0000",
+    Class == "Lipids" ~ "#FFFF00",
+    Class == "Nucleotides and derivatives" ~ "#00FF00",
+    Class == "Organic acids" ~ "#00FFFF",
+    Class == "Phenolic acids" ~ "#0000FF",
+    Class == "Others" ~ "#FF00FF"
+  ))
+df_mango <- data
+KmeansR2(df_mango)
+# ggsave("df_mango.pdf",width = 20,height = 10)
 }
