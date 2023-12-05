@@ -1,0 +1,51 @@
+library(KmeansTrendAnalyzer)
+p1 <- cncalc(iris[1:4],plot = TRUE)
+set.seed(400)
+p2 <- KmeansR(iris[1:4],centers = 2,angle = 90,box = TRUE)
+library(patchwork)
+p1 + p2 +
+  plot_layout(nrow = 2,byrow = FALSE)
+devtools::install_github("anhuikylin/KmeansTrendAnalyzer")
+
+
+library(data.table)
+df <- fread("e:/count/wine.data")
+p1 <- cncalc(df,plot = TRUE)
+set.seed(400)
+p2 <- KmeansR(df,centers = 2,angle = 90,box = TRUE)
+library(patchwork)
+p1 + p2 +
+  plot_layout(nrow = 2,byrow = FALSE)
+
+library(openxlsx)
+library(tidyverse)
+
+df <- read.xlsx("e:/count/pbi13449-sup-0009-tables2.xlsx")
+df <- df %>% 
+  select(GeneID,C0:STS5) %>% 
+  column_to_rownames("GeneID")
+p1 <- cncalc(df)
+set.seed(200)
+p2 <- KmeansR(df,centers = 4,angle = 90,box = TRUE,table = TRUE)
+library(patchwork)
+p1 + p2 +
+  plot_layout(heights = c(1,2))
+result <- fread("./kmeans_result.csv")
+table(result$Cluster)
+df <- read.xlsx("e:/count/pbi13449-sup-0009-tables2.xlsx")
+pbj <- df %>% 
+  filter(Module == 'lightcyan')
+myresult <- result %>% 
+  filter(Cluster == "Cluster4")
+pbj$GeneID %in% myresult$index
+library(ggvenn)
+a <- list("lightcyan" = pbj$GeneID,
+          Cluster4 = myresult$index)
+p3 <- ggvenn(a, c("lightcyan", "Cluster4"),
+       fill_color = c("lightcyan", "#8001FF", "green", "red"),
+       show_percentage = FALSE)
+p3
+p4 <- (p1|p3)+
+  plot_layout(widths = c(1,1))
+(p4 / p2 )+
+  plot_layout(heights = c(1,2))

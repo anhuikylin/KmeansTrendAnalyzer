@@ -1,0 +1,25 @@
+library(KmeansTrendAnalyzer)
+library(tidyverse)
+data(mango_FI_DAM)
+df <- mango_FI_DAM %>%
+  select(Index,`TA-1`:`C-3`) %>%
+  column_to_rownames("Index") %>%
+  mutate(TA = rowMeans(select(., 1:3)),
+         TB = rowMeans(select(., 4:6)),
+         TC = rowMeans(select(., 7:9)),
+         A = rowMeans(select(., 10:12)),
+         B = rowMeans(select(., 13:15)),
+         C = rowMeans(select(., 16:18))) %>%
+  select(!contains("-"))
+cncalc(df,plot = TRUE)
+set.seed(400)
+KmeansR(df,centers = 9,angle = 0,box = TRUE,table = TRUE)
+
+# -------------------------------------------------------------------------
+library(data.table)
+result <- fread("./kmeans_result.csv")
+result <- result %>% 
+  mutate(Group = str_sub(Cluster, -1)) %>% 
+  mutate(Group = as.numeric(Group))
+table(mango_FI_DAM$Group)
+table(result$Group)

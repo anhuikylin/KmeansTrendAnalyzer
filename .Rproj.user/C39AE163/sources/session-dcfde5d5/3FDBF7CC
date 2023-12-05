@@ -1,0 +1,27 @@
+{
+    "id": "3FDBF7CC",
+    "path": "E:/R包开发/kmeans-r-master/R/KmeansR2.R",
+    "project_path": "R/KmeansR2.R",
+    "type": "r_source",
+    "hash": "3061577214",
+    "contents": "",
+    "dirty": false,
+    "created": 1701767623009.0,
+    "source_on_save": false,
+    "relative_order": 4,
+    "properties": {
+        "tempName": "Untitled4",
+        "source_window_id": "",
+        "Source": "Source",
+        "cursorPosition": "9,19",
+        "scrollLine": "0"
+    },
+    "folds": "",
+    "lastKnownWriteTime": 1701768443,
+    "encoding": "UTF-8",
+    "collab_server": "",
+    "source_window": "",
+    "last_content_update": 1701768443021,
+    "read_only": false,
+    "read_only_alternatives": []
+}

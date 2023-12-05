@@ -1,0 +1,35 @@
+library(mclust)
+library(openxlsx)
+library(tidyverse)
+library(factoextra)
+library(fpc)
+library(cluster)
+rm(list = ls())
+data <- read.xlsx("e:/count/Supplemental_Table_S4_StaffRL.xlsx")
+df <- data %>% 
+  select(Index,`TA-1`:`C-3`) %>% 
+  column_to_rownames("Index") %>%
+  mutate(TA = rowMeans(select(., 1:3)),
+         TB = rowMeans(select(., 4:6)),
+         TC = rowMeans(select(., 7:9)),
+         A = rowMeans(select(., 10:12)),
+         B = rowMeans(select(., 13:15)),
+         C = rowMeans(select(., 16:18))) %>% 
+  select(!contains("-"))
+colnames(df)
+df <- data.frame(round(t(apply(df, 1, scale)), 2)) %>% 
+  setNames(colnames(df))
+
+
+gap_clust <- clusGap(df, kmeans, 10, B = 100, 
+                     verbose = interactive())
+fviz_gap_stat(gap_clust)
+fviz_nbclust(df, kmeans, method = "silhouette")+
+  ggprism::theme_prism()
+
+pamk.best <- pamk(df)
+pamk.best$nc
+
+clusplot(pam(df, pamk.best$nc))
+KmeansR(data = df,centers = 3,angle = 90)
+cncalc(df,plot = TRUE)
