@@ -67,5 +67,5 @@ KmeansR2(df_mango)
 
 ## Citation
 
-If you use clusterProfiler in published research, please cite this paper：<br>
+If you use  in published research, please cite this paper：<br>
 Liang F, Wang J, Khan MW. New Trends in R Package: K-Means Analysis and Visualization. Scientific Journal Biology & Life Sciences 4. DOI: 10.33552/SJBLS.2024.03.000577
