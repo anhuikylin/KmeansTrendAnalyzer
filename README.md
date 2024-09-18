@@ -67,4 +67,4 @@ KmeansR2(df_mango)
 
 ## Citation
 
-Liang F, Wang J, Khan MW. New Trends in R Package: K-Means Analysis and Visualization. Scientific Journal Biology & Life Sciences 4.
+Liang F, Wang J, Khan MW. New Trends in R Package: K-Means Analysis and Visualization. Scientific Journal Biology & Life Sciences 4. DOI: 10.33552/SJBLS.2024.03.000577
