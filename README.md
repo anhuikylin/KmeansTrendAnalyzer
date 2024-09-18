@@ -1,18 +1,18 @@
-# 🍠KmeansTrendAnalyzer
+# KmeansTrendAnalyzer
 
 ![R](https://img.shields.io/badge/R-4.3.0-greenyellow) ![MacOS version](https://img.shields.io/badge/license-MIT-salmon)
 
-#### 🦪Introduce
+#### Introduce
 The `cncalc` function in the KmeansTrendAnalyzer package is employed for determining the optimal number of clusters, while the `KmeansR` function is utilized to analyze the relative abundance trends of genes/proteins/metabolites across different groups. This involves standardizing the relative abundance of genes/proteins/metabolites by their average values within each group and subsequently conducting K-means clustering analysis. Following trend analysis, further gene/protein/metabolite functional analysis, such as GO and KEGG enrichment analysis, can be performed on the identified clusters of interest. This process continues until relevant genes of interest are unearthed.
 
-#### 🍣Installation tutorial
+#### Installation tutorial
 
-##### 🍜Github
+##### Github
 ```
 devtools::install_github("anhuikylin/KmeansTrendAnalyzer")
 ```
 
-#### 🦐Examples
+#### Examples
 
 
 ```
