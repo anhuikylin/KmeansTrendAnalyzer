@@ -65,7 +65,3 @@ KmeansR2(df_mango)
 ```
 ![image](https://github.com/anhuikylin/KmeansTrendAnalyzer/assets/103125590/8cc5980d-b464-45ee-b62e-6cb9a63d9369)
 
-## Citation
-
-If you use KmeansTrendAnalyzer in published research, please cite this paper：<br>
-Liang F, Wang J, Khan MW. New Trends in R Package: K-Means Analysis and Visualization. Scientific Journal Biology & Life Sciences 4. DOI: 10.33552/SJBLS.2024.03.000577
